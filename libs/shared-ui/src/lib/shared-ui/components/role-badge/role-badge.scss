@@ -1,0 +1,17 @@
+@use '@angular/material' as mat;
+
+.role-admin {
+  --mat-chip-elevated-container-color: var(--role-admin-bg);
+  --mat-chip-label-text-color: var(--role-admin-color);
+}
+
+.role-editor {
+  --mat-chip-elevated-container-color: var(--role-editor-bg);
+  --mat-chip-label-text-color: var(--role-editor-color);
+}
+
+.role-viewer {
+  --mat-chip-elevated-container-color: var(--role-viewer-bg);
+  --mat-chip-label-text-color: var(--role-viewer-color);
+}
+

@@ -1,0 +1,45 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+@use 'styles/theme-colors' as pdrThemeColors;
+
+$pdr-theme: mat.define-theme((
+  color: (
+    theme-type: light,
+    primary: pdrThemeColors.$primary-palette,
+    tertiary: pdrThemeColors.$tertiary-palette
+  ),
+  density: (scale: 0)
+));
+
+@include mat.core();
+@include mat.all-component-themes($pdr-theme);
+
+:root {
+  // Role colors
+  --role-admin-bg: #{mat.get-theme-color($pdr-theme, error, 80)};
+  --role-admin-color: #{mat.get-theme-color($pdr-theme, error, 30)};
+  --role-editor-bg: #{mat.get-theme-color($pdr-theme, primary, 80)};
+  --role-editor-color: #{mat.get-theme-color($pdr-theme, primary, 30)};
+  --role-viewer-bg: #{mat.get-theme-color($pdr-theme, secondary, 80)};
+  --role-viewer-color: #{mat.get-theme-color($pdr-theme, secondary, 30)};
+
+  // Smiley colors
+  --pdr-smiley-face: #{map.get(pdrThemeColors.$smiley-palette, 0)};
+  --pdr-smiley-eye: #{map.get(pdrThemeColors.$smiley-palette, 10)};
+  --pdr-smiley-mouth: #{map.get(pdrThemeColors.$smiley-palette, 10)};
+  --pdr-smiley-tongue: #{map.get(pdrThemeColors.$smiley-palette, 20)};
+  --pdr-smiley-tongue-line: #{map.get(pdrThemeColors.$smiley-palette, 30)};
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.text-center {
+  text-align: center;
+}

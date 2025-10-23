@@ -1,0 +1,57 @@
+<div class="user-details-dialog">
+  <div mat-dialog-title class="dialog-header">
+    <h2>User Details</h2>
+    <button mat-icon-button (click)="onClose()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div mat-dialog-content class="dialog-content">
+    @let _user = user();
+    @if (loading()) {
+      <div class="loading-spinner">
+        <mat-spinner diameter="40"></mat-spinner>
+      </div>
+    } @else if (_user) {
+      <mat-card>
+        <mat-card-content>
+          <div class="detail-grid">
+            <div class="detail-item">
+              <span class="label">ID</span>
+              <span class="value">{{ _user.id }}</span>
+            </div>
+            <div class="detail-item">
+              <span class="label">Full Name</span>
+              <span class="value">{{ _user | fullName }}</span>
+            </div>
+            <div class="detail-item">
+              <span class="label">Email</span>
+              <span class="value">{{ _user.email || 'N/A' }}</span>
+            </div>
+            <div class="detail-item">
+              <span class="label">Phone</span>
+              <span class="value">{{ _user.phoneNumber || 'N/A' }}</span>
+            </div>
+            <div class="detail-item">
+              <span class="label">Birth Date</span>
+              <span class="value">{{ _user.birthDate || 'N/A' }}</span>
+            </div>
+            <div class="detail-item">
+              <span class="label">Role</span>
+              <lib-pdr-role-badge [role]="_user.role" />
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    } @else {
+      <div class="error-state">
+        <mat-icon color="warn">error_outline</mat-icon>
+        <p>Failed to load user details</p>
+      </div>
+    }
+  </div>
+
+  <div mat-dialog-actions align="end">
+    <button mat-button (click)="onClose()">Close</button>
+  </div>
+</div>
