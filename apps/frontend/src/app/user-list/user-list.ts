@@ -59,7 +59,7 @@ export class UserList {
       return this.users();
     }
 
-    return this.users().filter((user) => `${user.firstName} ${user.lastName}`.toLowerCase().includes(term));
+    return this.users().filter((user) => `${user?.firstName ?? ''} ${user?.lastName ?? ''}`.trim().toLowerCase().includes(term));
   });
 
   protected readonly paginatedUsers = computed(() => {

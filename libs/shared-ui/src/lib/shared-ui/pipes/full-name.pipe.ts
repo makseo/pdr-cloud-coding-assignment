@@ -7,6 +7,6 @@ import { User } from "@pdr-cloud/shared";
 })
 export class FullNamePipe implements PipeTransform {
   transform(user: User) {
-    return `${user.firstName} ${user.lastName}`.trim();
+    return `${user?.firstName ?? ''} ${user?.lastName ?? ''}`.trim();
   }
 }
